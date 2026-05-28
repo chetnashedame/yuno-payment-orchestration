@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: payment-orchestration
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payment_db
+    username: yuno
+    password: yuno123
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+server:
+  port: 8080
+
+payment:
+  retry:
+    max-attempts: 3
+    delay: 1000
+  idempotency:
+    ttl-hours: 24

@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: yuno_postgres
+    environment:
+      POSTGRES_DB: payment_db
+      POSTGRES_USER: yuno
+      POSTGRES_PASSWORD: yuno123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: yuno_redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
